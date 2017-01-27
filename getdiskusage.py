@@ -23,4 +23,4 @@ for file in os.listdir(os.getcwd()):
     file = os.getcwd() + "/" + file
     files[file] = os.lstat(file).st_size
 
-print json.dumps({"files" : [files]}, indent=4)
+print json.dumps({"files" : files}, indent=4)
