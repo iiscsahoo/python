@@ -9,12 +9,15 @@ if len(sys.argv) != 2:
 
 try:
     os.chdir(sys.argv[1])
-except IOError as e:
+except OSError as e:
     if e.errno == errno.ENOENT:
-        print sys.argv[1] + " doesn't exist!"
+        print "Directory " + sys.argv[1] + " doesn't exist!"
         sys.exit(1)
     if e.errno == errno.EACCES:
-        print "Cannot access " + sys.argv[1]
+        print "Cannot access " + sys.argv[1] + " directory!"
+        sys.exit(1)
+    if e.errno == errno.ENOTDIR:
+        print sys.argv[1] + " is not a directory!"
         sys.exit(1)
 
 files = {}
