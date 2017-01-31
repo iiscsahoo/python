@@ -57,3 +57,5 @@ if timeID != -1:
     time = int((float(timeID[6:16]) - time.time()) // 60)
     if time > 1:
         print str(time) + " minutes"
+    else:
+        print "1 minute"
