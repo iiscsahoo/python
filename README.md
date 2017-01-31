@@ -5,7 +5,7 @@ Prints a list of all files in a directory and their total size in bytes in a JSO
 
 ### Example
 
-./getdiskusage.py /tmp
+$ getdiskusage.py /tmp
 
 {
     "files": {
@@ -19,14 +19,14 @@ Prints a list of all files in a directory and their total size in bytes in a JSO
 Requires at least Python 2.6 because of json library. Support for Python 3.x is unknown.
 
 ### Tests
-./getdiskusage.py foobar
+$ getdiskusage.py foobar
 
 foobar is not a directory!
 
-./getdiskusage.py /root
+$ getdiskusage.py /root
 
 Cannot access /root directory!
 
-./getdiskusage.py /foobar
+$ getdiskusage.py /foobar
 
 Directory /foobar doesn't exist!
