@@ -6,6 +6,10 @@ if len(sys.argv) != 4:
     print "Usage: " + sys.argv[0] + " route stop direction"
     sys.exit(1)
 
+route = sys.argv[1]
+stop = sys.argv[2]
+direction = sys.argv[3]
+
 url = "http://svc.metrotransit.org/NexTrip/"
 
 def getData (uri, key, value, arg):
@@ -26,18 +30,30 @@ def getData (uri, key, value, arg):
 
     return dataID
 
-routeID = getData("Routes", "Description", "Route", sys.argv[1])
+routeID = getData("Routes", "Description", "Route", route)
 
-print routeID
+if routeID < 0:
+    print "Route " + route + " doesn't exist!"
+    sys.exit(1)
 
-directionID =  getData("Directions/" + routeID, "Text", "Value", sys.argv[3] )
+uri = routeID
+directionID =  getData("Directions/" + uri, "Text", "Value", direction)
 
-print directionID
+if directionID < 0:
+    print "Direction " + direction + " doesn't exist for route " + route + "!"
+    sys.exit(1)
 
-stopID = getData("Stops/" + routeID + "/" + directionID, "Text", "Value", sys.argv[2] )
+uri = uri + "/" + directionID
+stopID = getData("Stops/" + uri, "Text", "Value", stop)
 
-print stopID
+if stopID < 0:
+    print "Stop " + stop + " doesn't exist for route " + route + " and direction " + direction + "!"
+    sys.exit(1)
 
-timeID = getData(routeID + "/" + directionID + "/" + stopID, "RouteDirection", "DepartureText", sys.argv[3])
+uri = uri + "/" + stopID
+timeID = getData(uri, "RouteDirection", "DepartureTime", direction)
 
-print timeID
+if timeID != -1:
+    time = int((float(timeID[6:16]) - time.time()) // 60)
+    if time > 1:
+        print str(time) + " minutes"
