@@ -1,7 +1,7 @@
 ## getdiskusage.py
 
 ### Purpose
-Printsa list of all files in a directory and their total size in bytes in a JSON format.
+Prints a list of all files in a directory and their total size in bytes in a JSON format.
 
 ### Example
 
