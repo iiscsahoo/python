@@ -1,17 +1,17 @@
-##nextbus.py
+## nextbus.py
 
 ### Purpose
 
-A program which will tell you how long it is until the next bus on “BUS ROUTE” leaving from “BUS STOP NAME” going “DIRECTION”
+A program which will tell you how long it is until the next bus on "BUS ROUTE" leaving from "BUS STOP NAME" going "DIRECTION"
 using the api defined at http://svc.metrotransit.org/.
 
-“BUS ROUTE” will be a substring of the bus route name which is only in one bus route, 
-“BUS STOP NAME” will be a substring of the bus stop name which is only in one bus stop on that route, and
-“DIRECTION” will be “north” “east” “west” or “south”
+"BUS ROUTE" will be a substring of the bus route name which is only in one bus route, 
+"BUS STOP NAME" will be a substring of the bus stop name which is only in one bus stop on that route, and
+"DIRECTION" will be "north", "east", "west", or "south"
 
 ### Example
 
-$ nextbus.py “METRO Blue Line” “Target Field Station Platform 1” “south”
+$ nextbus.py "metro blue line" "Target Field Station Platform 1" "south"
 
 8 Minutes
 
@@ -21,14 +21,14 @@ Requires at least Python 2.6 because of requests library (https://github.com/ken
 
 ### Tests
 
-$ nextbus.py 
+$ nextbus.py "foobar" "Target Field Station Platform 1" "south"
 
-foobar is not a directory!
+Usage: nextbus.py route stop direction
 
-./getdiskusage.py /root
+$ nextbus.py "foobar" "Target Field Station Platform 1" "south"
 
-Cannot access /root directory!
+Route foobar doesn't exist!
 
-./getdiskusage.py /foobar
+$ nextbus.py "METRO Blue Line" "Target Field Station Platform 1" "foobar"
 
-Directory /foobar doesn't exist!
+Direction blah doesn't exist for route !
